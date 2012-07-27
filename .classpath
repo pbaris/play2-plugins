@@ -1,14 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry kind="src" path="thumbs/src/main/java" output="thumbs/target/scala-2.9.1/classes"/>
-	<classpathentry kind="src" path="thumbs/src/test/java" output="thumbs/target/scala-2.9.1/test-classes"/>
-	<classpathentry kind="src" path="thumbs/src/main/scala" output="thumbs/target/scala-2.9.1/classes"/>
-	<classpathentry kind="src" path="thumbs/src/test/scala" output="thumbs/target/scala-2.9.1/test-classes"/>
-	
+	<classpathentry kind="src" output="thumbs/target/scala-2.9.1/classes" path="thumbs/src/main/java" />
+	<classpathentry kind="src" output="utils/target/scala-2.9.1/classes" path="utils/src/main/java" />
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="con" path="org.scala-ide.sdt.launching.SCALA_CONTAINER"/>
-	<classpathentry kind="output" path="bin"/>
-	
 	<classpathentry kind="lib" path="/home/panos/.ivy2/cache/play/play_2.9.1/jars/play_2.9.1-2.0.2.jar"/>
 	<classpathentry kind="lib" path="/home/panos/.ivy2/cache/play/templates_2.9.1/jars/templates_2.9.1-2.0.2.jar"/>
 	<classpathentry kind="lib" path="/home/panos/.ivy2/cache/com.github.scala-incubator.io/scala-io-file_2.9.1/jars/scala-io-file_2.9.1-0.4.0.jar"/>
