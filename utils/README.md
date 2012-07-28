@@ -15,11 +15,12 @@ resolvers += "pbaris" at "https://github.com/pbaris/m2-repo/raw/master"
 
 ## Features
 
-* PrintUtil
+* ```pbaris.play.util.PrintUtil```
+
 A helper class for printing in a table format any instance of a ```java.util.Map``` or ```play.mvc.Http.Request```
 <pre>
 +--------------------------------------------+
-|                     Map                    |
+|                    Map                     |
 +--------------------------------------------+
 | aLongerKey          : one more value again |
 | key1                : a value              |
@@ -28,7 +29,7 @@ A helper class for printing in a table format any instance of a ```java.util.Map
 | theLongerstKeyOfAll : the last value       |
 +--------------------------------------------+
 +--------------------------------------------------+
-|                Http.Request                      |
+|                 Http.Request                     |
 +--------------------------------------------------+
 | aLongerKey          : [1]                        |
 | key1                : [1, 2, 3]                  |
