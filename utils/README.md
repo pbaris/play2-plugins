@@ -28,13 +28,13 @@ A helper class for printing in a table format any instance of a ```java.util.Map
 | longKey             : one more value       |
 | theLongerstKeyOfAll : the last value       |
 +--------------------------------------------+
-+--------------------------------------------------+
-|                 Http.Request                     |
-+--------------------------------------------------+
-| aLongerKey          : [1]                        |
-| key1                : [1, 2, 3]                  |
-| key2                : [alpha, beta, gama, delta] |
-| longKey             : [value]                    |
-| theLongerstKeyOfAll : [yes, no, no, yes, no]     |
-+--------------------------------------------------+
++---------------------------------------------------+
+|                  Http.Request                     |
++---------------------------------------------------+
+| aLongerKey          : [1]                         |
+| key1                : [1, 2, 3]                   |
+| key2                : [alpha, beta, gamma, delta] |
+| longKey             : [value]                     |
+| theLongerstKeyOfAll : [yes, no, no, yes, no]      |
++---------------------------------------------------+
 </pre>

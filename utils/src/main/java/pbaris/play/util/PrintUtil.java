@@ -10,7 +10,38 @@ import java.util.Set;
 import play.mvc.Http.Request;
 
 /**
+ * A helper class for printing in a table format any instance 
+ * of a {@link java.util.Map} or {@link play.mvc.Http.Request}
+ * <br/><br/>
+ * For example:
+ * <p><blockquote><pre>
+ *     PrintUtil.print(myMap);
+ *     +--------------------------------------------+
+ *     |                    Map                     |
+ *     +--------------------------------------------+
+ *     | aLongerKey          : one more value again |
+ *     | key1                : a value              |
+ *     | key2                : an other value       |
+ *     | longKey             : one more value       |
+ *     | theLongerstKeyOfAll : the last value       |
+ *     +--------------------------------------------+
+ * </pre></blockquote>
+ * 
+ * <p><blockquote><pre>
+ *     PrintUtil.print(myHttpRequest);
+ *     +---------------------------------------------------+
+ *     |                  Http.Request                     |
+ *     +---------------------------------------------------+
+ *     | aLongerKey          : [1]                         |
+ *     | key1                : [1, 2, 3]                   |
+ *     | key2                : [alpha, beta, gamma, delta] |
+ *     | longKey             : [value]                     |
+ *     | theLongerstKeyOfAll : [yes, no, no, yes, no]      |
+ *     +---------------------------------------------------+
+ * </pre></blockquote>
+ * 
  * @author Panos Bariamis
+ * @since	0.0.1
  */
 public class PrintUtil {
 
@@ -19,7 +50,15 @@ public class PrintUtil {
 	protected final static String FRAME_HBORDER = "-";
 	protected final static String FRAME_VBORDER = "|";
 	protected final static String SEPARATOR = "_____SEP_____";
-
+	
+	private PrintUtil() {}
+	
+	/**
+	 * Prints a {@link java.util.Map} in a table format
+	 * 
+	 * @param	map
+	 * 			The map to be print
+	 */
 	public static void print(Map<String, ?> map) {
 		if (map == null) return;
 		
@@ -32,7 +71,13 @@ public class PrintUtil {
 			printFrame("Map", list);
 		}
 	}
-
+	
+	/**
+	 * Prints the parameters of a {@link play.mvc.Http.Request} in a table format
+	 * 
+	 * @param	request
+	 * 			The request to be print
+	 */
 	public static void print(Request request) {
 		Map<String, String[]> map = request.queryString();
 		if (map == null) return;
@@ -47,7 +92,7 @@ public class PrintUtil {
 		}
 	}
 	
-	protected static void printFrame(String title, List<String> list) {
+	private static void printFrame(String title, List<String> list) {
 		Collections.sort(list);
 		String[] messages = list.toArray(new String[] {});
 		String[] msgKeys = new String[messages.length];
@@ -91,7 +136,7 @@ public class PrintUtil {
 		System.out.println(result);
 	}
 
-	protected static int findLongest(String[] strs) {
+	private static int findLongest(String[] strs) {
 		int result = 0;
 		for (String str : strs) {
 			if (str.length() > result) {
@@ -101,7 +146,7 @@ public class PrintUtil {
 		return result;
 	}
 
-	protected static String compoundSpaces(int longest, String str) {
+	private static String compoundSpaces(int longest, String str) {
 		String result = "";
 		for (int i = str.length(); i < longest; i++) {
 			result += " ";
@@ -109,7 +154,7 @@ public class PrintUtil {
 		return result;
 	}
 
-	protected static String frameTitle(String title, int longest) {
+	private static String frameTitle(String title, int longest) {
 		char[] spaces = new char[longest];
 		for (int i = 0; i < longest; i++) {
 			spaces[i] = ' ';
