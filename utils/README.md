@@ -19,6 +19,8 @@ resolvers += "pbaris" at "https://github.com/pbaris/m2-repo/raw/master"
 
 A helper class for printing in a table format any instance of a ```java.util.Map``` or ```play.mvc.Http.Request```
 <pre>
+PrintUtil.print(myMap);
+
 +--------------------------------------------+
 |                    Map                     |
 +--------------------------------------------+
@@ -28,6 +30,10 @@ A helper class for printing in a table format any instance of a ```java.util.Map
 | longKey             : one more value       |
 | theLongerstKeyOfAll : the last value       |
 +--------------------------------------------+
+
+
+PrintUtil.print(myHttpRequest);
+
 +---------------------------------------------------+
 |                  Http.Request                     |
 +---------------------------------------------------+
