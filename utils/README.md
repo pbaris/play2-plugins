@@ -19,8 +19,33 @@ resolvers += "pbaris" at "https://github.com/pbaris/m2-repo/raw/master"
 
 A helper class for printing in a table format any instance of a ```java.util.Map``` or ```play.mvc.Http.Request```
 
-```PrintUtil.print(myMap);```
+### Examples
+<pre>
+PrintUtil.print(myMap);
 
++--------------------------------------------+
+|                    Map                     |
++--------------------------------------------+
+| aLongerKey          : one more value again |
+| key1                : a value              |
+| key2                : an other value       |
+| longKey             : one more value       |
+| theLongerstKeyOfAll : the last value       |
++--------------------------------------------+
+
+
+PrintUtil.print(myHttpRequest);
+
++---------------------------------------------------+
+|                  Http.Request                     |
++---------------------------------------------------+
+| aLongerKey          : [1]                         |
+| key1                : [1, 2, 3]                   |
+| key2                : [alpha, beta, gamma, delta] |
+| longKey             : [value]                     |
+| theLongerstKeyOfAll : [yes, no, no, yes, no]      |
++---------------------------------------------------+
+</pre>
 
 ## License
 This software is licensed under the Apache 2 license, quoted below.
