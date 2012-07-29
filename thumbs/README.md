@@ -13,6 +13,9 @@ Generate thumbnails
 resolvers += "pbaris" at "https://github.com/pbaris/m2-repo/raw/master"
 </pre>
 
+* Create a file called play.plugins in your application's ```conf``` directory <br/>
+  and add the line ```10000:pbaris.play.thumbs.ThumbsPlugin```
+  
 ### Examples
 TODO
 
