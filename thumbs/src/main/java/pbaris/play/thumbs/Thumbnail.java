@@ -6,14 +6,17 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Calendar;
 import java.util.Date;
 
 import javax.imageio.ImageIO;
 
-import play.mvc.Http.Request;
+import play.Logger;
+import play.api.libs.MimeTypes;
+import play.mvc.Http;
+import play.mvc.Result;
+import play.mvc.Results;
 
 import com.google.common.io.Files;
 
@@ -23,26 +26,29 @@ import com.google.common.io.Files;
  * @author	Panos Bariamis
  * @since	1.0.0
  */
-//http://pbaris.files.wordpress.com/2012/05/tux_pao.jpg
-//http://creteotel.gr/logo.jpg
-//http://www.bookvillasingreece.com/villas_files/cyclades/santorini/001/20082251011.jpg
 public class Thumbnail {
-	public static InputStream createThumbnail(Request request) {
+	
+	public static Result ok() {
+		ImageInfo ii = new ImageInfo(Http.Context.current().request());
+		return Results.ok(createThumbnail(ii)).as(MimeTypes.forExtension(ii.getType()).get());
+	}
+	
+	private static InputStream createThumbnail(ImageInfo ii) {
 		InputStream is = null;
-		
-		ImageInfo ii = new ImageInfo(request);
-		
 		try {
 			clearCache();
-			
 			File fileDst = ii.getThumbnailFile();
 			if (!fileDst.exists()) { //TODO check the modified date
 				ImageScaler.scale(ImageIO.read(new URL(ii.getSourceURL())), ii);
-				is = new FileInputStream(fileDst);
 			}
 			
-		} catch (MalformedURLException e) {
-		} catch (IOException e) {} 
+			is = new FileInputStream(fileDst);
+			
+		} catch (Exception e) {
+			Logger.error(e.getMessage(), e);
+		} 
+		
+		//TODO create no image
 		
 		return is;
 	}

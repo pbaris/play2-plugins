@@ -5,7 +5,6 @@ package pbaris.play.thumbs;
  * of type other than png or jpg
  *
  * @author  Panos Bariamis
- * @since	1.0.0
  */
 public class UnsupportedThumbnailException extends RuntimeException {
 

@@ -12,14 +12,8 @@ import play.Configuration;
 import play.Plugin;
 
 /**
- * 10000:pbaris.play.thumbs.ThumbsPlugin
- * 
- * thumbs.relative.enabled=true
- * thumbs.relative.basePath=/var/www/netm_files/
- * thumbs.cache=/var/www/netm_files
- * 
  * @author	Panos Bariamis
- * @since	1.0.0
+ * @since	0.0.1
  */
 public class ThumbsPlugin extends Plugin {
 	

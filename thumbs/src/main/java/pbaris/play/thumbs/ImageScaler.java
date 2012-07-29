@@ -13,7 +13,7 @@ import org.apache.commons.lang.BooleanUtils;
 
 /**
  * @author	Panos Bariamis
- * @since	1.0.0
+ * @since	0.0.1
  */
 public class ImageScaler {
 	

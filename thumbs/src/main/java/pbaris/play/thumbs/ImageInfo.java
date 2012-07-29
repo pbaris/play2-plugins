@@ -18,7 +18,7 @@ import play.mvc.Http.Request;
  * is based on the {@link play.mvc.Http.Request} analysis.
  * 
  * @author	Panos Bariamis
- * @since	1.0.0
+ * @since	0.0.1
  */
 public class ImageInfo {
 	private String 	
@@ -72,9 +72,9 @@ public class ImageInfo {
 		} catch (Exception e) {}
 		
 		try { type = qs.get("type")[0].toLowerCase(); } catch (Exception e) {
-			type = src.substring(src.lastIndexOf(".") + 1);
+			type = src.substring(src.lastIndexOf(".") + 1).toLowerCase();
 		}
-		if (!type.equals("jpg") && !type.equals("png")) {
+		if (type == null || (!type.equals("jpg") && !type.equals("png"))) {
 			throw new UnsupportedThumbnailException("thumbnail can be of type png or jpg only");
 		}
 	}
