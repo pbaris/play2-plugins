@@ -24,9 +24,9 @@ public class ImageInfo {
 	private String 	
 		name = "", 
 		regex = "^(?:https?|ftps?|file)://.*$",
-		type, filename, src, sourceURL;
+		type, suffix, filename, src, sourceURL;
 	
-	private File thumbnailFile;
+	private File thumbnailFile, noImageFile;
 	
 	private Integer size, width, height;
 	private Boolean frame;
@@ -140,15 +140,43 @@ public class ImageInfo {
 		
 		return thumbnailFile;
 	}
-
+	
 	/**
-	 * Analyzes all the parameters to generate a filename for the thumbnail.
+	 * It generates a file that corresponds to the no-image file for the given parameters.
+	 * If the method been called, the type of the generated (no) image becomes jpg.
+	 * 
+	 * @return	The no image file
+	 */
+	public File getNoImageFile() {
+		if (noImageFile == null) {
+			noImageFile = new File(getCacheFolder(), "noimage" + getSuffix() + ".jpg");
+			type = "jpg";
+		}
+		
+		return noImageFile;
+	}
+	
+	/**
+	 * Generates a filename for the thumbnail based on the source image file name
+	 * and the {@link play.mvc.Http.Request} parameters
 	 * 
 	 * @return	The thumbnail filename
 	 */
 	public String getFilename() {
 		if (filename == null) {
-			String suffix = "_";
+			filename = name.substring(0, name.lastIndexOf(".")) + getSuffix() + "." + type;
+		}
+		return filename;
+	}
+	
+	/**
+	 * Analyzes all the parameters to generate a suffix for the thumbnail.
+	 * 
+	 * @return	The thumbnail suffix
+	 */
+	private String getSuffix() {
+		if (suffix == null) {
+			suffix = "_";
 			if (frame != null && frame) {
 				suffix += "f";
 			}
@@ -163,10 +191,9 @@ public class ImageInfo {
 			} else {
 				suffix += "d100";
 			}
-
-			filename = name.substring(0, name.lastIndexOf(".")) + suffix + "." + type;
 		}
-		return filename;
+		
+		return suffix;
 	}
 	
 	/**
