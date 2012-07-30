@@ -5,6 +5,7 @@ import static pbaris.play.thumbs.ThumbsPlugin.getCacheFolder;
 import static pbaris.play.thumbs.ThumbsPlugin.isRelative;
 
 import java.io.File;
+import java.net.URL;
 import java.util.Map;
 
 import play.mvc.Http.Request;
@@ -24,7 +25,8 @@ public class ImageInfo {
 	private String 	
 		name = "", 
 		regex = "^(?:https?|ftps?|file)://.*$",
-		type, suffix, filename, src, sourceURL;
+		
+		sourceURL, type, suffix, filename, src;
 	
 	private File thumbnailFile, noImageFile;
 	
@@ -72,7 +74,7 @@ public class ImageInfo {
 		} catch (Exception e) {}
 		
 		try { type = qs.get("type")[0].toLowerCase(); } catch (Exception e) {
-			type = src.substring(src.lastIndexOf(".") + 1).toLowerCase();
+			type = name.substring(name.lastIndexOf(".") + 1).toLowerCase();
 		}
 		if (type == null || (!type.equals("jpg") && !type.equals("png"))) {
 			throw new UnsupportedThumbnailException("thumbnail can be of type png or jpg only");
@@ -196,14 +198,35 @@ public class ImageInfo {
 		return suffix;
 	}
 	
+	public boolean needsCreate() {
+		File fileDst = getThumbnailFile();
+		
+		if (!fileDst.exists()) 
+			return true;
+
+		if (!getSourceURL().startsWith("file://"))
+			return true;
+		
+		try {
+			File fileSrc = new File(new URL(getSourceURL()).toURI());
+			return fileSrc.lastModified() > fileDst.lastModified();
+		} catch (Exception e) {}
+		
+		return true;
+	}
+	
 	/**
 	 * The type of the thumbnail is based on type parameter or the extension
-	 * of the source filename (src parameter). Valid type are png and jpg.
+	 * of the source file (src parameter). Valid type are png and jpg.
 	 * 
 	 * @return	The type of the thumbnail
 	 */
 	public String getType() {
 		return type;
+	}
+	
+	protected void setType(String type) {
+		this.type = type;
 	}
 	
 	public Boolean getFrame() {
@@ -214,10 +237,18 @@ public class ImageInfo {
 		return size;
 	}
 	
+	/**
+	 * @return	The width of the thumbnail or null if not
+	 * 			specified in the {@link play.mvc.Http.Request}
+	 */
 	public Integer getWidth() {
 		return width;
 	}
 	
+	/**
+	 * @return	The height of the thumbnail or null if not
+	 * 			specified in the {@link play.mvc.Http.Request}
+	 */
 	public Integer getHeight() {
 		return height;
 	}

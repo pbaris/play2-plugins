@@ -143,9 +143,8 @@ public class ImageScaler {
 			
 			if (proceed) {
 				image = getScaledImage((int)sw, (int)sh);
-			} 
+			}
 			
-			//FIXME if not proceed the keep the original file type
 			try {
 				ImageIO.write(image, ii.getType(), ii.getThumbnailFile());
 			} catch (IOException e) {}

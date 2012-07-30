@@ -41,19 +41,17 @@ public class Thumbnail {
 		clearCache();
 
 		InputStream is = null;
-		File fileDst;
 		try {
-			fileDst = ii.getThumbnailFile();
-			if (!fileDst.exists()) { //TODO check the modified date
+			if (ii.needsCreate()) {
 				ImageScaler.scale(ImageIO.read(new URL(ii.getSourceURL())), ii);
 			}
 			
-			is = new FileInputStream(fileDst);
+			is = new FileInputStream(ii.getThumbnailFile());
 		} catch (Exception e) {} 
 		
 		if (is == null) {			
 			try {
-				fileDst = ii.getNoImageFile();
+				File fileDst = ii.getNoImageFile();
 				if (!fileDst.exists()) createNoImage(ii);
 				is = new FileInputStream(fileDst);
 			} catch (Exception e) {
