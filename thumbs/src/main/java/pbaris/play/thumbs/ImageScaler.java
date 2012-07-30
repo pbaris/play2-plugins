@@ -9,8 +9,6 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
-import org.apache.commons.lang.BooleanUtils;
-
 /**
  * @author	Panos Bariamis
  * @since	0.0.1
@@ -42,7 +40,7 @@ public class ImageScaler {
 				height = ii.getHeight(), 
 				size;
 		
-		if (BooleanUtils.isTrue(ii.getFrame())) {
+		if (ii.isFrame()) {
 			size = Math.min(ii.getWidth(), ii.getHeight());
 			
 			if (size == ii.getHeight()) {

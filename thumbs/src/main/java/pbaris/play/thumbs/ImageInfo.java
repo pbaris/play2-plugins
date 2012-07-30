@@ -8,6 +8,8 @@ import java.io.File;
 import java.net.URL;
 import java.util.Map;
 
+import org.apache.commons.lang.BooleanUtils;
+
 import play.mvc.Http.Request;
 
 /**
@@ -31,7 +33,7 @@ public class ImageInfo {
 	private File thumbnailFile, noImageFile;
 	
 	private Integer size, width, height;
-	private Boolean frame;
+	private boolean frame, nocache;
 	
 	/**
 	 * It takes a {@link play.mvc.Http.Request} and analyzes
@@ -67,11 +69,9 @@ public class ImageInfo {
 		try { width = Integer.parseInt(qs.get("width")[0]); } catch (Exception e) {}
 		try { height = Integer.parseInt(qs.get("height")[0]); } catch (Exception e) {}
 		
-		try {
-			frame = new Boolean(qs.get("frame")[0]);
-			if (frame != null && frame && (width == null || height == null))
-				throw new NullPointerException("frame parameter requires both width and height parameters");
-		} catch (Exception e) {}
+		frame = qs.containsKey("frame");
+		if (frame && (width == null || height == null))
+			throw new NullPointerException("frame parameter requires both width and height parameters");
 		
 		try { type = qs.get("type")[0].toLowerCase(); } catch (Exception e) {
 			type = name.substring(name.lastIndexOf(".") + 1).toLowerCase();
@@ -79,6 +79,8 @@ public class ImageInfo {
 		if (type == null || (!type.equals("jpg") && !type.equals("png"))) {
 			throw new UnsupportedThumbnailException("thumbnail can be of type png or jpg only");
 		}
+		
+		nocache = qs.containsKey("nocache");
 	}
 	
 	/**
@@ -179,7 +181,7 @@ public class ImageInfo {
 	private String getSuffix() {
 		if (suffix == null) {
 			suffix = "_";
-			if (frame != null && frame) {
+			if (frame) {
 				suffix += "f";
 			}
 			if (size != null) {
@@ -199,6 +201,9 @@ public class ImageInfo {
 	}
 	
 	public boolean needsCreate() {
+		if (BooleanUtils.isTrue(nocache))
+			return true;
+		
 		File fileDst = getThumbnailFile();
 		
 		if (!fileDst.exists()) 
@@ -229,7 +234,7 @@ public class ImageInfo {
 		this.type = type;
 	}
 	
-	public Boolean getFrame() {
+	public boolean isFrame() {
 		return frame;
 	}
 	
