@@ -1,22 +1,20 @@
 import sbt._
 import Keys._
+import PlayProject._
 
-object ThumbsBuild extends Build {
-	lazy val buildVersion = "1.0.0"
-	lazy val playVersion = "2.0.2"
-	
-	lazy val root = Project(id = "play2-plugins-thumbs", base = file("."), settings = Project.defaultSettings).settings(
-		version := buildVersion,
-		
-		publishTo := Some(Resolver.file("file",  new File(Path.userHome.absolutePath+"/.m2/repository"))),
-		
+object ApplicationBuild extends Build {
+
+    val appName         = "thumbs"
+    val appVersion      = "1.0.1"
+
+    val appDependencies = Seq(
+      // Add your project dependencies here,
+    )
+
+    val main = PlayProject(appName, appVersion, appDependencies, mainLang = JAVA).settings(
 		organization := "pbaris",
-		
-		resolvers += "Typesafe Repository" at "http://repo.typesafe.com/typesafe/releases/",
-		
-		javacOptions ++= Seq("-source","1.6","-target","1.6", "-encoding", "UTF-8"),
-		javacOptions += "-Xlint:unchecked",
-		
-		libraryDependencies += "play" %% "play" % playVersion
-	)
+		thumbnail tag
+		publishTo := Some(Resolver.file("file",  new File(Path.userHome.absolutePath+"/.m2/repository")))
+    )
+
 }
