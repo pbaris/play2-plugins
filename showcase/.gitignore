@@ -1,8 +1,9 @@
-logs
-project/project
-project/target
-target
-tmp
-.history
-dist
+/target
+/project/project
+/project/target
 /cache
+/target
+/logs
+/tmp
+/dist
+.history
