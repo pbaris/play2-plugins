@@ -1,8 +1,10 @@
 @(message: String)
 
+@import tags._
+
 @main("Welcome to Play 2.0") {
     
-<h1>Bootstrap starter template</h1>
-<p>Use this document as a way to quick start any new project.<br> All you get is this message and a barebones HTML document.</p>
-    
+	@thumbnail("http://www.bookvillasingreece.com/villas_files/cyclades/santorini/001/20082251011.jpg", 
+			'width->200, 'height->200, 'frame->true, 'type->"png", 'alt->"", 'debug->true )
 }
+

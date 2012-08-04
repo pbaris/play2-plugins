@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry kind="src" output="thumbs/target/scala-2.9.1/classes" path="thumbs/src/main/java"/>
-	<classpathentry kind="src" output="utils/target/scala-2.9.1/classes" path="utils/src/main/java"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="con" path="org.scala-ide.sdt.launching.SCALA_CONTAINER"/>
 	<classpathentry kind="lib" path="/Users/panos/development/_frameworks/play/repository/local/play/play_2.9.1/2.0.2/jars/play_2.9.1.jar" sourcepath="/Users/panos/development/_frameworks/play-2.0.2/framework/src"/>

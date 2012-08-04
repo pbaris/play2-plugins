@@ -1,0 +1,14 @@
+@(src: String, args: (Symbol, Any)*)
+
+@import scala._
+
+@attrs = @{ args.filter(p => !List("frame", "nocache", "size", "type", "src", "debug").contains(p._1.name)).toMap }
+@url = @{ "/thumb?src=" + src + 
+	{	args.filter(p => List("size", "width", "height", "type").contains(p._1.name))
+			.map(p => "&" + p._1.name + "=" + p._2).mkString("") 
+	} + {
+		args.filter(p => List("frame", "nocache").contains(p._1.name)).map(p => "&" + p._1.name).mkString("")
+	}
+}
+<img src="@url" @toHtmlArgs(attrs) />
+@if(args.find(p => p._1.name == "debug")) { <br/>@url }

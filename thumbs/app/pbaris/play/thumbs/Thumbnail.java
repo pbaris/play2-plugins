@@ -16,13 +16,13 @@ import java.util.Date;
 
 import javax.imageio.ImageIO;
 
+import org.apache.commons.io.FileUtils;
+
 import play.Logger;
 import play.api.libs.MimeTypes;
 import play.mvc.Http;
 import play.mvc.Result;
 import play.mvc.Results;
-
-import com.google.common.io.Files;
 
 /**
  * TODO documentation
@@ -93,7 +93,6 @@ public class Thumbnail {
 		ImageIO.write(image, ii.getType(), ii.getNoImageFile());
 	}
 	
-	@SuppressWarnings("deprecation")
 	private static void clearCache() {
 		File cacheFile = new File(getCacheFolder(), ".__play2_clear_thumbs_cache__");
 		try {
@@ -106,12 +105,12 @@ public class Thumbnail {
 			date = cal.getTime();
 				
 			if (today.after(date) || today.equals(date)) {
-				Files.deleteDirectoryContents(getCacheFolder());
+				FileUtils.cleanDirectory(getCacheFolder());
 				cacheFile.createNewFile();
 			}
 		} catch (Exception e) {
 			try {
-				Files.deleteDirectoryContents(getCacheFolder());
+				FileUtils.cleanDirectory(getCacheFolder());
 				cacheFile.createNewFile();
 			} catch (IOException e1) {}
 		}

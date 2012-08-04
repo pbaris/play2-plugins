@@ -9,7 +9,7 @@ object ApplicationBuild extends Build {
 
 	val appDependencies = Seq(
     	"pbaris" %% "play2-plugins-utils" % "0.0.1",
-    	"pbaris" %% "play2-plugins-thumbs" % "1.0.0"
+    	"pbaris" %% "play2-plugins-thumbs" % "1.0.1"
     )
 
     val main = PlayProject(appName, appVersion, appDependencies, mainLang = JAVA).settings(

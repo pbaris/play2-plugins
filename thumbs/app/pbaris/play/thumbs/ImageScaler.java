@@ -75,8 +75,10 @@ public class ImageScaler {
 			Graphics2D g = frameImage.createGraphics();
 			g.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BICUBIC);
 			g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-			g.setColor(Color.WHITE);
-			g.fillRect(0, 0, width, height);
+			if (!isPNG) {
+				g.setColor(Color.WHITE);
+				g.fillRect(0, 0, width, height);
+			}
 			g.drawImage(image, x, y, image.getWidth(), image.getHeight(), null);
 			g.dispose();
 			
