@@ -40,7 +40,7 @@ public class ImageScaler {
 				height = ii.getHeight(), 
 				size;
 		
-		if (ii.isFrame()) {
+		if (ii.isBox()) {
 			size = Math.min(ii.getWidth(), ii.getHeight());
 			
 			if (size == ii.getHeight()) {
@@ -71,8 +71,8 @@ public class ImageScaler {
 			
 			boolean isPNG = ii.getType().equals("png");
 			
-			BufferedImage frameImage = new BufferedImage(width, height, isPNG ? BufferedImage.TYPE_INT_ARGB : BufferedImage.TYPE_INT_RGB);
-			Graphics2D g = frameImage.createGraphics();
+			BufferedImage boxImage = new BufferedImage(width, height, isPNG ? BufferedImage.TYPE_INT_ARGB : BufferedImage.TYPE_INT_RGB);
+			Graphics2D g = boxImage.createGraphics();
 			g.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BICUBIC);
 			g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 			if (!isPNG) {
@@ -83,7 +83,7 @@ public class ImageScaler {
 			g.dispose();
 			
 			try {
-				ImageIO.write(frameImage, ii.getType(), ii.getThumbnailFile());
+				ImageIO.write(boxImage, ii.getType(), ii.getThumbnailFile());
 			} catch (IOException e) {}
 			
 		} else { 

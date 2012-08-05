@@ -4,8 +4,9 @@
 
 # Home page
 GET     /                           controllers.Application.index()
+GET		/thumbnails					controllers.Application.thumbnails()
 
-GET		/thumb						controllers.Application.thumb()
+GET		/thumb						pbaris.play.thumbs.Thumbnail.thumb()
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)

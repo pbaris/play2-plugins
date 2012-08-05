@@ -14,6 +14,6 @@ object ApplicationBuild extends Build {
 
     val main = PlayProject(appName, appVersion, appDependencies, mainLang = JAVA).settings(
 		//resolvers += "pbaris" at "https://github.com/pbaris/m2-repo/raw/master"
-		resolvers += "pbaris" at "file://" + Path.userHome.absolutePath + "/.m2/repository"
+		resolvers += "pbaris" at "file://" + Path.userHome.absolutePath + "/.m2/m2-repo"
     )
 }

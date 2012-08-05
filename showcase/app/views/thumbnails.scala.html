@@ -1,0 +1,55 @@
+@import tags._
+
+@image = @{ "http://pbaris.files.wordpress.com/2012/05/tux_pao.jpg" }
+
+@main() {
+
+<h1>play2-plugins-thumbs</h1>
+<hr/>
+
+<h2>@Messages("title.examples")</h2>
+<p>@@image = @{ "http://pbaris.files.wordpress.com/2012/05/tux_pao.jpg" }</p>
+<div class="row">
+	<div class="span3">
+		<div class="well">
+			@thumbnail(image, 'width->200, 'height->250, 'alt->"")
+			<hr/>
+			@@thumbnail(image, 'width->200, 'height->250)
+		</div>
+	</div>
+	<div class="span3">
+		<div class="well">
+			@thumbnail(image, 'width->200, 'alt->"")
+			<hr/>
+			@@thumbnail(image, 'width->200)
+		</div>
+	</div>
+	<div class="span3">
+		<div class="well">
+			@thumbnail(image, 'width->200, 'height->180, 'box->true, 'alt->"")
+			<hr/>
+			@@thumbnail(image, 'width->200, 'height->180, 'box->true, 'type->"png")
+		</div>
+	</div>
+	<div class="span3">
+		<div class="well">
+			@thumbnail(image, 'size->150, 'alt->"")
+			<hr/>
+			@@thumbnail(image, 'size->150)
+		</div>
+	</div>
+</div>
+<hr/>
+	
+<h2>@Messages("title.install")</h2>
+<ol>
+	<li>At your dependencies add<br/><br/>
+		<pre>"pbaris" %% "play2-plugins-thumbs" % "1.0.1"</pre><br/>
+	</li>
+	<li>At your resolvers add<br/><br/>
+		<pre>resolvers += "pbaris" at "https://github.com/pbaris/m2-repo/raw/master"</pre><br/>
+	</li>
+	<li>Create a file called play.plugins in your application's <code>conf</code> directory and add the line <code>10000:pbaris.play.thumbs.ThumbsPlugin</code>
+	</li>
+</ol>
+}

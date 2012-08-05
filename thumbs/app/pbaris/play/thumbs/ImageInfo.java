@@ -33,18 +33,18 @@ public class ImageInfo {
 	private File thumbnailFile, noImageFile;
 	
 	private Integer size, width, height;
-	private boolean frame, nocache;
+	private boolean box, nocache;
 	
 	/**
 	 * It takes a {@link play.mvc.Http.Request} and analyzes
-	 * the parameters (src, size, width, height, frame, type) 
+	 * the parameters (src, size, width, height, box, type) 
 	 * to to which the generated thumbnail based  
 	 * 
 	 * @param	request
 	 * 			The {@link play.mvc.Http.Request} to analyze
 	 * 
 	 * @throws	NullPointerException
-	 * 			If the src parameter is omitted or if request wants a frame 
+	 * 			If the src parameter is omitted or if request wants a box 
 	 * 			thumbnail but width or height parameter are omitted.
 	 * 
 	 * @throws	UnsupportedThumbnailException
@@ -69,9 +69,9 @@ public class ImageInfo {
 		try { width = Integer.parseInt(qs.get("width")[0]); } catch (Exception e) {}
 		try { height = Integer.parseInt(qs.get("height")[0]); } catch (Exception e) {}
 		
-		frame = qs.containsKey("frame");
-		if (frame && (width == null || height == null))
-			throw new NullPointerException("frame parameter requires both width and height parameters");
+		box = qs.containsKey("box");
+		if (box && (width == null || height == null))
+			throw new NullPointerException("box parameter requires both width and height parameters");
 		
 		try { type = qs.get("type")[0].toLowerCase(); } catch (Exception e) {
 			type = name.substring(name.lastIndexOf(".") + 1).toLowerCase();
@@ -181,8 +181,8 @@ public class ImageInfo {
 	private String getSuffix() {
 		if (suffix == null) {
 			suffix = "_";
-			if (frame) {
-				suffix += "f";
+			if (box) {
+				suffix += "b";
 			}
 			if (size != null) {
 				suffix += "s" + size;
@@ -234,8 +234,8 @@ public class ImageInfo {
 		this.type = type;
 	}
 	
-	public boolean isFrame() {
-		return frame;
+	public boolean isBox() {
+		return box;
 	}
 	
 	public Integer getSize() {

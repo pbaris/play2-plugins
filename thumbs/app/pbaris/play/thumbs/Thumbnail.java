@@ -20,7 +20,7 @@ import org.apache.commons.io.FileUtils;
 
 import play.Logger;
 import play.api.libs.MimeTypes;
-import play.mvc.Http;
+import play.mvc.Controller;
 import play.mvc.Result;
 import play.mvc.Results;
 
@@ -30,10 +30,10 @@ import play.mvc.Results;
  * @author	Panos Bariamis
  * @since	1.0.0
  */
-public class Thumbnail {
+public class Thumbnail extends Controller {
 	
-	public static Result create() {
-		ImageInfo ii = new ImageInfo(Http.Context.current().request());
+	public static Result thumb() {
+		ImageInfo ii = new ImageInfo(request());
 		return Results.ok(createThumbnail(ii)).as(MimeTypes.forExtension(ii.getType()).get());
 	}
 	

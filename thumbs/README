@@ -17,7 +17,13 @@ resolvers += "pbaris" at "https://github.com/pbaris/m2-repo/raw/master"
   and add the line ```10000:pbaris.play.thumbs.ThumbsPlugin```
   
 ### Examples
-TODO
+@thumbnail(image, 'width->200, 'height->250)
+
+@thumbnail(image, 'width->200)
+
+@thumbnail(image, 'width->200, 'height->180, 'box->true, 'type->"png")
+
+@thumbnail(image, 'size->150)
 
 ## License
 This software is licensed under the Apache 2 license, quoted below.

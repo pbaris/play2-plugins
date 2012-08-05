@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
+	<classpathentry kind="src" output="thumbs/target/scala-2.9.1/classes" path="thumbs/app" />
+    <classpathentry kind="src" output="utils/target/scala-2.9.1/classes" path="utils/app" />
+    <classpathentry kind="src" output="showcase/target/scala-2.9.1/classes" path="showcase/app" />
+    
+    <classpathentry kind="lib" path="showcase/target/scala-2.9.1/classes_managed" />
+	<classpathentry kind="output" path="bin" />
+	
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="con" path="org.scala-ide.sdt.launching.SCALA_CONTAINER"/>
 	<classpathentry kind="lib" path="/Users/panos/development/_frameworks/play/repository/local/play/play_2.9.1/2.0.2/jars/play_2.9.1.jar" sourcepath="/Users/panos/development/_frameworks/play-2.0.2/framework/src"/>
@@ -87,5 +94,4 @@
 	<classpathentry kind="lib" path="/Users/panos/development/_frameworks/play/repository/local/org.easytesting/fest-assert/1.4/jars/fest-assert.jar"/>
 	<classpathentry kind="lib" path="/Users/panos/development/_frameworks/play/repository/local/org.easytesting/fest-util/1.1.6/jars/fest-util.jar"/>
 	<classpathentry kind="lib" path="/Users/panos/development/_frameworks/play/framework/sbt/boot/scala-2.9.1/lib/scala-library.jar"/>
-	<classpathentry kind="output" path="bin"/>
 </classpath>

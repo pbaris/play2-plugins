@@ -1,10 +1,19 @@
-@(message: String)
 
-@import tags._
-
-@main("Welcome to Play 2.0") {
-    
-	@thumbnail("http://www.bookvillasingreece.com/villas_files/cyclades/santorini/001/20082251011.jpg", 
-			'width->200, 'height->200, 'frame->true, 'type->"png", 'alt->"", 'debug->true )
+@main() {
+<div class="row">
+	<div class="span4">
+		<blockquote>
+			<h2>play2-plugins-thumbs</h2>
+			<p>A plugin for creating a thumbnail from an image in sytem or from a URL</p>
+			<p><a href="@routes.Application.thumbnails()">@Messages("label.more")</a></p>
+		</blockquote>
+	</div>
+	<div class="span4">
+		<blockquote>
+			<h2>play2-plugins-utils</h2>
+			<p>TODO</p>
+			<p><a href="#">@Messages("label.more")</a></p>
+		</blockquote>
+	</div>
+</div>    
 }
-
