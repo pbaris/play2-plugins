@@ -49,7 +49,9 @@
 	<li>At your resolvers add<br/><br/>
 		<pre>resolvers += "pbaris" at "https://github.com/pbaris/m2-repo/raw/master"</pre><br/>
 	</li>
-	<li>Create a file called play.plugins in your application's <code>conf</code> directory and add the line <code>10000:pbaris.play.thumbs.ThumbsPlugin</code>
+	<li>Create a file called play.plugins in your application's <code>conf</code> directory and add the line <code>10000:pbaris.play.thumbs.ThumbsPlugin</code><br/><br/></li>
+	<li>At your <code>conf/routes</code> add<br/><br/>
+		<pre>GET		/thumb		pbaris.play.thumbs.Thumbnail.thumb()</pre>  
 	</li>
 </ol>
 }

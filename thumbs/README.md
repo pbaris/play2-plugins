@@ -16,6 +16,11 @@ resolvers += "pbaris" at "https://github.com/pbaris/m2-repo/raw/master"
 * Create a file called play.plugins in your application's ```conf``` directory <br/>
   and add the line ```10000:pbaris.play.thumbs.ThumbsPlugin```
   
+* At your ```conf/routes``` add
+<pre>
+GET		/thumb		pbaris.play.thumbs.Thumbnail.thumb()
+</pre>  
+  
 ### Examples
 @thumbnail(image, 'width->200, 'height->250)
 
