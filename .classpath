@@ -3,6 +3,7 @@
 	<classpathentry kind="src" output="thumbs/target/scala-2.9.1/classes" path="thumbs/app" />
     <classpathentry kind="src" output="utils/target/scala-2.9.1/classes" path="utils/app" />
     <classpathentry kind="src" output="showcase/target/scala-2.9.1/classes" path="showcase/app" />
+    <classpathentry kind="src" output="widgets/target/scala-2.9.1/classes" path="widgets/app" />
     
     <classpathentry kind="lib" path="showcase/target/scala-2.9.1/classes_managed" />
 	<classpathentry kind="output" path="bin" />
