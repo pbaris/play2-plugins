@@ -5,7 +5,7 @@ Generate thumbnails
 
 * At your dependencies add
 <pre>
-"pbaris" %% "play2-plugins-thumbs" % "1.0.0"
+"pbaris" %% "play2-plugins-thumbs" % "1.0.1"
 </pre>
 
 * At your resolvers add
